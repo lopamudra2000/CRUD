@@ -39,9 +39,10 @@ export const fetchTask=(id)=> async dispatch=>{
 };
 
 export const editTask=(id, formValues)=> async dispatch=>{
-    const response=await tasks.put(`/Tasks/${id}`, formValues);
+    const response=await tasks.patch(`/Tasks/${id}`, formValues);
 
     dispatch({type:EDIT_TASK, payload:response.data});
+    history.push('/');
 };
 
 export const deleteTask=(id)=> async dispatch=>{

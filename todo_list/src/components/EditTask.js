@@ -1,37 +1,33 @@
-import React from 'react';
-import {Link} from 'react-router-dom';
-import{
-    Form,
-    FormGroup,
-    Label,
-    Input,
-    Button
-
-} from 'reactstrap';
+import React from 'react'
 import {connect} from 'react-redux';
+import {fetchTask,editTask} from '../actions';
+import TaskForm from './TaskForm';
+import _ from 'lodash';
 
-const EditTask = (props) =>{
-    console.log(props);
-    return(
-        <Form>
-            <FormGroup>
-                <Label>
-                   Edit
-                </Label>
-                <Input type="text" placeholder="Update Your Task"></Input>
-            </FormGroup>
-            <Button style={{borderRadius:"50%",height:"60px",width:"60px"}} type="submit">DONE</Button>
-            <Link to="/">
-                <Button className="ml-2" style={{borderRadius:"50%",height:"60px",width:"60px"}}>
-                    <strong>X</strong>
-                </Button>
-                </Link>
-        </Form>
-    )
-};
+class EditTask extends React.Component{
+    componentDidMount(){
+        this.props.fetchTask(this.props.match.params.id);
+    }
+    onSubmit=(formValues)=>{
+        this.props.editTask(this.props.match.params.id, formValues);
+    }
+    render(){
+            if (!this.props.task){
+                return<div>loading.....</div>;
+            }
+            return(
+                <div>
+                    <h3>
+                        edit task
+                    </h3>
+                    <TaskForm initialValues={_.pick(this.props.task, 'title')} 
+                    onSubmit={this.onSubmit}/>
+                </div>
+            )
+    }
+}
 const mapStateToProps= (state, ownProps)=>{
-    console.log(ownProps);
     return {task:state.tasks[ownProps.match.params.id] };
 }
 
-export default connect(mapStateToProps)(EditTask);
+export default connect(mapStateToProps,{fetchTask,editTask})(EditTask);
