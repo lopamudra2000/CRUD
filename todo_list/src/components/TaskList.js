@@ -21,7 +21,10 @@ class TaskList extends React.Component{
                     Edit
                 </Button>
             </Link>
+            <Link to={`/delete/${task.id}`}>
             <Button>Delete</Button>
+            </Link>
+            
             </div>
             );
         }

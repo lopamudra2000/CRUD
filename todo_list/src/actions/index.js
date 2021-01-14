@@ -49,4 +49,5 @@ export const deleteTask=(id)=> async dispatch=>{
     await tasks.put(`/Tasks/${id}`);
 
     dispatch({type:DELETE_TASK, payload:id});
+    history.push('/')
 };

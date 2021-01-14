@@ -29,7 +29,7 @@ class Header extends React.Component{
     render(){return(
         <Navbar color="light" light>
             <Container>
-                <NavbarBrand href="/"><strong> TO DO LIST</strong></NavbarBrand>
+                <NavbarBrand href="/"><strong>LIST</strong></NavbarBrand>
                 {this.renderAdd()}
             </Container>
         </Navbar>
