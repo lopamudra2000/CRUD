@@ -10,7 +10,7 @@ class AddTask extends React.Component{
     }
     render(){
     return(
-        <div>
+        <div className="taskform">
              <h3>Create a task</h3>
              <TaskForm onSubmit={this.onSubmit}/>
         </div>
