@@ -46,7 +46,7 @@ export const editTask=(id, formValues)=> async dispatch=>{
 };
 
 export const deleteTask=(id)=> async dispatch=>{
-    await tasks.put(`/Tasks/${id}`);
+    await tasks.delete(`/Tasks/${id}`);
 
     dispatch({type:DELETE_TASK, payload:id});
     history.push('/')

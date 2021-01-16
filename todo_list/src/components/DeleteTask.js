@@ -1,9 +1,11 @@
 import React from 'react';
-import Modal from './Modal'
+import ModalTab from './Modal'
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import history from '../history';
 import { fetchTask, deleteTask } from '../actions';
+import { Button} from 'reactstrap';
+
 
 class DeleteTask extends React.Component {
   componentDidMount() {
@@ -15,14 +17,16 @@ class DeleteTask extends React.Component {
 
     return (
       <React.Fragment>
-        <button
+        <Button
           onClick={() => this.props.deleteTask(id)}
           className="ui button negative"
         >
           Delete
-        </button>
-        <Link to="/" className="ui button">
-          Cancel
+        </Button>
+        <Link to="/">
+          <Button>
+            cancel
+          </Button>
         </Link>
       </React.Fragment>
     );
@@ -34,7 +38,7 @@ class DeleteTask extends React.Component {
 
   render() {
     return (
-      <Modal
+      <ModalTab
         title="Delete Task"
         content={this.renderContent()}
         actions={this.renderActions()}
