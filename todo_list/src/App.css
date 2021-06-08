@@ -3,8 +3,31 @@
     justify-content: space-around;
 }
 
+#modal-mid {
+    max-height: 200px;
+    max-width: 20%;
+    margin-left: 50%;
+    transform: translate(-50%);
+    margin-top: 15%;
+    display: inline-block;
+}
+
+
 @media only screen and (max-width: 500px) {
     .taskform {
         margin-left: 30px;
+    }
+
+    #modal-mid {
+        max-height: auto;
+        max-width: 50%;
+    }
+}
+
+
+@media only screen and (max-width: 950px) {
+    #modal-mid {
+        max-height: auto;
+        max-width: 50%;
     }
 }
